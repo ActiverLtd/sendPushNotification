@@ -48,7 +48,8 @@ exports.handler = (event, context, callback) => {
                     to: token,
                     notification: {
                         title,
-                        body: text
+                        body: text,
+                        sound: 'default'
                     },
                     data
                 },
