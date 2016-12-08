@@ -1,7 +1,7 @@
 'use strict';
 
 const request = require('request');
-const admin = require("firebase-admin");
+const admin = require('firebase-admin');
 
 const app = admin.initializeApp({
     credential: admin.credential.cert({
@@ -22,7 +22,7 @@ exports.handler = (event, context, callback) => {
         body: err ? err.message : JSON.stringify(res),
         headers: {
             'Content-Type': 'application/json',
-        },
+        }
     });
 
     const fetchToken = (uid, cb) => {
