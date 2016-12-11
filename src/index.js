@@ -31,6 +31,9 @@ exports.handler = (event, context, callback) => {
             (snapshot) => {
                 const token = snapshot.val();
                 app.delete();
+                if (!token) {
+                    done({message: 'No token was found for this user id.'});
+                }
                 console.log(`Retrieved token: ${token}`);
                 cb(token);
             },
