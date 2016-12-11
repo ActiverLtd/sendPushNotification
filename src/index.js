@@ -3,19 +3,19 @@
 const request = require('request');
 const admin = require('firebase-admin');
 
-const app = admin.initializeApp({
-    credential: admin.credential.cert({
-        projectId: process.env.projectId,
-        clientEmail: process.env.clientEmail,
-        privateKey: process.env.privateKey.replace(/\\n/g, '\n')
-    }),
-    databaseURL: process.env.databaseUrl
-});
-
-const db = admin.database();
-
 exports.handler = (event, context, callback) => {
     //console.log('Received event:', JSON.stringify(event, null, 2));
+
+    const app = admin.initializeApp({
+        credential: admin.credential.cert({
+            projectId: process.env.projectId,
+            clientEmail: process.env.clientEmail,
+            privateKey: process.env.privateKey.replace(/\\n/g, '\n')
+        }),
+        databaseURL: process.env.databaseUrl
+    });
+
+    const db = admin.database();
 
     const done = (err, res) => callback(null, {
         statusCode: err ? '400' : '200',
